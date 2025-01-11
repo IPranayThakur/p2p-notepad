@@ -1,0 +1,107 @@
+/* Container for the toggle switch */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+    padding: 10px;
+  }
+  
+  /* Label styles for Host and Peer */
+  .label {
+    font-size: 20px;
+    font-weight: lighter;
+    transition: font-weight 0.2s;
+    cursor: default;
+    color: #a5a2a2;
+  }
+  
+  .label.active {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* The switch itself (capsule-shaped) */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 45px;
+    border-radius: 25px;
+    background-color: lightgray;
+    cursor: pointer;
+  }
+  
+  /* Hide the default checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider (capsule part) */
+  .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: lightgray;
+    transition: background-color 0.3s ease;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    overflow: hidden;
+  }
+  
+  /* Active state (Host: orange, Peer: purple) */
+  .slider.host {
+    background-color: #ED6663;
+  }
+  
+  .slider.peer {
+    background-color: #B52B65;
+  }
+  
+  /* The toggle circle (inside the slider) */
+  .toggle-circle {
+    width: 35px;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.642);
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1;
+    left: 5px; /* Default position for Host */
+  }
+  
+  /* When the input is checked (Peer), move the circle to the right */
+  input:checked + .slider .toggle-circle {
+    transform: translateX(55px); /* Moves the circle to the right (Peer side) */
+  }
+  
+  /* The icons (Host and Peer) inside the slider */
+  .toggle-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+  
+  /* When Host is active, position icon to the left */
+  .slider.peer .toggle-icon {
+    left: 10px;
+    opacity: 0.5;
+  }
+  
+  /* When Peer is active, position icon to the right */
+  .slider.host .toggle-icon {
+    right: 10px;
+    opacity: 0.7;
+  }
